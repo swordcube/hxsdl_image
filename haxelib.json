@@ -1,0 +1,15 @@
+{
+    "name": "hxsdl_image",
+    "url" : "https://github.com/swordcube/hxsdl_image",
+    "license": "MIT",
+    "tags": ["haxe", "sdl", "hxsdl", "sdl_image", "hxsdl_image", "cpp", "binds", "bindings", "native"],
+    "description": "A haxelib containing hxcpp bindings for SDL Image.",
+    "version": "0.1.0",
+    "classPath": "src/",
+    "releasenote": "Initial release.",
+    "contributors": ["swordcube"],
+    "dependencies": {
+        "hxcpp": "",
+        "hxsdl": ""
+    }
+}

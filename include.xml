@@ -1,0 +1,49 @@
+<xml>
+	<pragma once="true" />
+
+	<files id="haxe">
+		<compilerflag value="-I${haxelib:hxsdl_image}/vendor/include/sdl2_image" />
+		<compilerflag value="-I${haxelib:hxsdl_image}" />
+	</files>
+
+	<files id="__main__">
+		<compilerflag value="-I${haxelib:hxsdl_image}/vendor/include/sdl2_image" />
+		<compilerflag value="-I${haxelib:hxsdl_image}" />
+	</files>
+
+	<section if="windows HXCPP_M64">
+		<copyFile name="SDL2_image.dll" from="${haxelib:hxsdl_image}/vendor/lib/Windows/x64/sdl2_image" toolId="exe" overwrite="true" />
+	</section>
+
+	<section if="windows HXCPP_M32">
+		<copyFile name="SDL2_image.dll" from="${haxelib:hxsdl_image}/vendor/lib/Windows/x86/sdl2_image" toolId="exe" overwrite="true" />
+	</section>
+
+	<target id="haxe">
+		<!--64 bit-->
+		<section if="windows HXCPP_M64">
+			<lib name="${haxelib:hxsdl_image}/vendor/lib/Windows/x64/sdl2_image/SDL2_image.lib" />
+			<lib name="winmm.lib" />
+		</section>
+
+		<!--32 bit-->
+		<section if="windows HXCPP_M32">
+			<lib name="${haxelib:hxsdl_image}/vendor/lib/Windows/x86/sdl2_image/SDL2_image.lib" />
+		</section>
+
+		<!--64 bit only-->
+		<section if="macos">
+			<lib name="${haxelib:hxsdl_image}/vendor/lib/macOS/x64/libSDL2_image.a" />
+		</section>
+
+		<section if="linux || android">
+			<lib name="-lSDL2_image" />
+		</section>
+
+		<!--additional macos flags that maybe do something i don't know bro-->
+		<section if="macos || ios">
+			<vflag name="-framework" value="OpenGL" />
+			<vflag name="-framework" value="Cocoa" />
+		</section>
+	</target>
+</xml>
