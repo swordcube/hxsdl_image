@@ -1,5 +1,8 @@
 <xml>
 	<pragma once="true" />
+	<set name="LINK_TOOLID" value="exe"/>
+        <set name="LINK_TOOLID" value="dll" if="dynamic_link"/>
+        <set name="LINK_TOOLID" value="static_link" if="static_link"/>
 
 	<files id="haxe">
 		<compilerflag value="-I${haxelib:hxsdl_image}/vendor/include/sdl2_image" />
@@ -12,11 +15,11 @@
 	</files>
 
 	<section if="windows HXCPP_M64">
-		<copyFile name="SDL2_image.dll" from="${haxelib:hxsdl_image}/vendor/lib/Windows/x64/sdl2_image" toolId="exe" overwrite="true" />
+		<copyFile name="SDL2_image.dll" from="${haxelib:hxsdl_image}/vendor/lib/Windows/x64/sdl2_image" toolid="${LINK_TOOLID}" overwrite="true" />
 	</section>
 
 	<section if="windows HXCPP_M32">
-		<copyFile name="SDL2_image.dll" from="${haxelib:hxsdl_image}/vendor/lib/Windows/x86/sdl2_image" toolId="exe" overwrite="true" />
+		<copyFile name="SDL2_image.dll" from="${haxelib:hxsdl_image}/vendor/lib/Windows/x86/sdl2_image" toolid="${LINK_TOOLID}" overwrite="true" />
 	</section>
 
 	<target id="haxe">
